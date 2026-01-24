@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ujjwalnepal11.github.io/e-commerce/sitemap.xml
