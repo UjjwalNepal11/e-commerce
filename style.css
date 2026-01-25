@@ -476,7 +476,7 @@ i {
   height: 100%;
   width: 100%;
   padding: 10px;
-  overflow-x: hidden;
+  overflow-x: auto;
   background-color: white;
   position: relative;
   margin-top: 20px;
@@ -484,8 +484,9 @@ i {
 }
 .product-slide {
   display: flex;
+  flex-wrap: nowrap;
   margin-top: 10px;
-  overflow-x: hidden;
+  overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
 }
@@ -515,6 +516,7 @@ i {
   position: absolute;
   border: 2px solid transparent;
   transform: translateY(-50%);
+  z-index: 101;
 }
 .l-btn {
   border-radius: 0 5px 5px 0;
@@ -727,6 +729,7 @@ i {
 .black.active {
   width: 100%;
   z-index: 100;
+  pointer-events: none;
 }
 .black.active-signin {
   width: 100%;
@@ -839,4 +842,33 @@ i {
 }
 .search-message.active {
   display: block;
+}
+#demo-notice {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 12px 16px;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid #ffeeba;
+  font-family: Arial, sans-serif;
+}
+#demo-notice button {
+  color: red;
+  margin-left: 10px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0.3;
+  }
 }

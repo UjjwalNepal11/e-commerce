@@ -2,17 +2,13 @@ function updateButtons(slide, leftBtn, rightBtn) {
   const maxScroll = slide.scrollWidth - slide.clientWidth;
   if (slide.scrollLeft <= 0) {
     leftBtn.style.opacity = "0.5";
-    leftBtn.style.pointerEvents = "none";
   } else {
     leftBtn.style.opacity = "1";
-    leftBtn.style.pointerEvents = "auto";
   }
   if (slide.scrollLeft >= maxScroll - 1) {
     rightBtn.style.opacity = "0.5";
-    rightBtn.style.pointerEvents = "none";
   } else {
     rightBtn.style.opacity = "1";
-    rightBtn.style.pointerEvents = "auto";
   }
 }
 function initSlider(slideSelector, leftBtnSelector, rightBtnSelector) {
@@ -35,6 +31,16 @@ function initSlider(slideSelector, leftBtnSelector, rightBtnSelector) {
 initSlider(".product-slide", ".l-btn", ".r-btn");
 initSlider(".product-slide-1", ".btn-1b", ".btn-1a");
 initSlider(".product-slide-2", ".btn-1c", ".btn-1d");
+
+document
+  .querySelectorAll(".product-slide, .product-slide-1, .product-slide-2")
+  .forEach((slide) => {
+    slide.addEventListener("wheel", (e) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        e.preventDefault();
+      }
+    });
+  });
 const backtop = document.querySelector(".backtop");
 backtop.addEventListener("click", () => {
   window.scrollTo({
@@ -175,3 +181,6 @@ searchInput.addEventListener("keydown", (event) => {
     performSearch();
   }
 });
+function hideNotice() {
+  document.getElementById("demo-notice").style.display = "none";
+}
