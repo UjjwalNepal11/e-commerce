@@ -15,8 +15,8 @@ An e-commerce website clone inspired by Amazon, built with HTML, CSS, and JavaSc
 
 ## Technologies Used
 
-- HTML5
-- CSS3 (Animations)
+- HTML
+- CSS
 - JavaScript
 
 ## Live Demo
