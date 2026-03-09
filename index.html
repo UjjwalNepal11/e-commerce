@@ -56,6 +56,35 @@
       name="google-site-verification"
       content="lujOgNl5AW7iKj_yAGCgfr6AeMgXwby6qd6b17xxd6w"
     />
+    <meta name="date" id="date-meta" content="" />
+    <meta name="revised" id="revised-meta" content="" />
+    <script>
+      (function () {
+        const now = new Date();
+        const dateStr = now.toISOString().split("T")[0];
+        const displayDate = now.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+        document.getElementById("date-meta").setAttribute("content", dateStr);
+        document
+          .getElementById("revised-meta")
+          .setAttribute("content", displayDate);
+        const schemas = document.querySelectorAll(
+          'script[type="application/ld+json"]',
+        );
+        schemas.forEach(function (schema) {
+          try {
+            const data = JSON.parse(schema.textContent);
+            if (data["@type"] === "WebSite") {
+              data.dateModified = dateStr;
+              schema.textContent = JSON.stringify(data, null, 2);
+            }
+          } catch (e) {}
+        });
+      })();
+    </script>
     <link rel="icon" type="image/ico" href="images/favicon.png" />
     <link rel="stylesheet" href="style.css" />
     <link
@@ -79,8 +108,23 @@
         }
       }
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Amazon Clone Demo",
+        "url": "https://ujjwalnepal11.github.io/e-commerce/",
+        "logo": "https://ujjwalnepal11.github.io/e-commerce/images/logo.png",
+        "description": "Demo Amazon clone e-commerce website project for front-end learning purposes.",
+        "author": {
+          "@type": "Person",
+          "name": "Bhagwat Nepal"
+        }
+      }
+    </script>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div id="demo-notice">
       ⚠️ <strong>NOTICE:</strong> This is a
       <strong>demo front-end project</strong> created for learning purposes
@@ -88,6 +132,7 @@
       collect any personal information or process real transactions. All links
       and buttons are non-functional. <button onclick="hideNotice()">✖</button>
     </div>
+    <h1 class="visually-hidden">Amazon Clone - Online Shopping Demo</h1>
     <div class="search-overlay"></div>
     <div class="sidebar">
       <div class="hdn-head">
@@ -154,7 +199,7 @@
       </div>
     </div>
     <div class="black"></div>
-    <header>
+    <header role="banner">
       <div class="first">
         <div class="flex logo">
           <a href="#"
@@ -262,413 +307,651 @@
         </div>
       </div>
     </header>
-    <section class="sec-1">
-      <div class="container">
-        <div class="container-1">
-          <div class="para">
-            <p>
-              You are on Amazon.clone. You can also shop on Amazon for millions
-              of products with fast local delivery.
-            </p>
-            <a href="https://www.amazon.com" target="_blank"
-              >Click here to go to amazon.com</a
-            >
-          </div>
-          <div class="product-comp">
-            <div class="box">
-              <h3>Gaming Accessories</h3>
-              <div class="box-a">
-                <div>
-                  <img loading="lazy" src="images/ga1.jpg" alt="headsets" />
-                  <span>Headsets</span>
+    <main id="main-content" role="main">
+      <section class="sec-1">
+        <div class="container">
+          <div class="container-1">
+            <div class="para">
+              <p>
+                You are on Amazon.clone. You can also shop on Amazon for
+                millions of products with fast local delivery.
+              </p>
+              <a href="https://www.amazon.com" target="_blank"
+                >Click here to go to amazon.com</a
+              >
+            </div>
+            <div class="product-comp">
+              <div class="box">
+                <h3>Gaming Accessories</h3>
+                <div class="box-a">
+                  <div>
+                    <img loading="lazy" src="images/ga1.jpg" alt="headsets" />
+                    <span>Headsets</span>
+                  </div>
+                  <div>
+                    <img loading="lazy" src="images/ga2.jpg" alt="keyboard" />
+                    <span>Keyboards</span>
+                  </div>
+                  <div>
+                    <img
+                      loading="lazy"
+                      src="images/ga3.jpg"
+                      alt="computer mouse"
+                    />
+                    <span>Computer mouse</span>
+                  </div>
+                  <div>
+                    <img loading="lazy" src="images/ga4.jpg" alt="chairs" />
+                    <span>Chairs</span>
+                  </div>
                 </div>
-                <div>
-                  <img loading="lazy" src="images/ga2.jpg" alt="keyboard" />
-                  <span>Keyboards</span>
+                <a href="#">See More</a>
+              </div>
+              <div class="box">
+                <h3>Shop By Category</h3>
+                <div class="box-a">
+                  <div>
+                    <img loading="lazy" src="images/sc1.jpg" alt="laptop" />
+                    <span>Laptop</span>
+                  </div>
+                  <div>
+                    <img loading="lazy" src="images/sc2.jpg" alt="video game" />
+                    <span>Video Games</span>
+                  </div>
+                  <div>
+                    <img loading="lazy" src="images/sc3.jpg" alt="baby" />
+                    <span>Baby</span>
+                  </div>
+                  <div>
+                    <img
+                      loading="lazy"
+                      src="images/sc4.jpg"
+                      alt="toy & games"
+                    />
+                    <span>Toy & Games</span>
+                  </div>
                 </div>
+                <a href="#">Shop Now</a>
+              </div>
+              <div class="box box-c">
+                <h3>Amazon Basics</h3>
                 <div>
                   <img
                     loading="lazy"
-                    src="images/ga3.jpg"
-                    alt="computer mouse"
+                    src="images/amazon basics.jpg"
+                    alt="Amazon Basics everyday essentials products"
                   />
-                  <span>Computer mouse</span>
                 </div>
-                <div>
-                  <img loading="lazy" src="images/ga4.jpg" alt="chairs" />
-                  <span>Chairs</span>
-                </div>
+                <a href="#">See More</a>
               </div>
-              <a href="#">See More</a>
-            </div>
-            <div class="box">
-              <h3>Shop By Category</h3>
-              <div class="box-a">
-                <div>
-                  <img loading="lazy" src="images/sc1.jpg" alt="laptop" />
-                  <span>Laptop</span>
+              <div class="box">
+                <h3>New Home Arrival Under $50</h3>
+                <div class="box-a">
+                  <div>
+                    <img loading="lazy" src="images/ki1.jpg" alt="kitchen" />
+                    <span>Kitchen & Dining</span>
+                  </div>
+                  <div>
+                    <img loading="lazy" src="images/ki2.jpg" alt="home" />
+                    <span>Home Improvement</span>
+                  </div>
+                  <div>
+                    <img loading="lazy" src="images/ki3.jpg" alt="decor" />
+                    <span>Decor</span>
+                  </div>
+                  <div>
+                    <img loading="lazy" src="images/ki4.jpg" alt="bed" />
+                    <span>Bedding & Bath</span>
+                  </div>
                 </div>
-                <div>
-                  <img loading="lazy" src="images/sc2.jpg" alt="video game" />
-                  <span>Video Games</span>
-                </div>
-                <div>
-                  <img loading="lazy" src="images/sc3.jpg" alt="baby" />
-                  <span>Baby</span>
-                </div>
-                <div>
-                  <img loading="lazy" src="images/sc4.jpg" alt="toy & games" />
-                  <span>Toy & Games</span>
-                </div>
+                <a href="#">Shop Now</a>
               </div>
-              <a href="#">Shop Now</a>
             </div>
-            <div class="box box-c">
-              <h3>Amazon Basics</h3>
-              <div>
+            <div class="product-comp">
+              <div class="box box-c">
+                <h3>Shop Valentine's Day</h3>
+                <div>
+                  <img
+                    loading="lazy"
+                    src="images/shop valentine's.jpg"
+                    alt="Valentine's Day gifts and deals"
+                  />
+                </div>
+                <a href="#">See More</a>
+              </div>
+              <div class="box box-c">
+                <h3>Electronics</h3>
+                <div>
+                  <img
+                    loading="lazy"
+                    src="images/electronics.jpg"
+                    alt="Electronics devices and gadgets"
+                  />
+                </div>
+                <a href="#">See More</a>
+              </div>
+              <div class="box box-c">
+                <h3>Find your ideal TV</h3>
+                <div>
+                  <img
+                    loading="lazy"
+                    src="images/find your deal.jpg"
+                    alt="Find your ideal TV deal"
+                  />
+                </div>
+                <a href="#">See More</a>
+              </div>
+              <div class="box box-c">
+                <h3>Easy Returns</h3>
+                <div>
+                  <img
+                    loading="lazy"
+                    src="images/easy return.jpg"
+                    alt="Easy returns policy information"
+                  />
+                </div>
+                <a href="#">See More</a>
+              </div>
+            </div>
+          </div>
+          <div class="slider">
+            <div class="image-box">
+              <div class="slide">
                 <img
                   loading="lazy"
-                  src="images/amazon basics.jpg"
-                  alt="basics"
+                  src="images/si1.jpg"
+                  alt="Shop Valentine's Day promotional banner with gift ideas"
                 />
               </div>
-              <a href="#">See More</a>
-            </div>
-            <div class="box">
-              <h3>New Home Arrival Under $50</h3>
-              <div class="box-a">
-                <div>
-                  <img loading="lazy" src="images/ki1.jpg" alt="kitchen" />
-                  <span>Kitchen & Dining</span>
-                </div>
-                <div>
-                  <img loading="lazy" src="images/ki2.jpg" alt="home" />
-                  <span>Home Improvement</span>
-                </div>
-                <div>
-                  <img loading="lazy" src="images/ki3.jpg" alt="decor" />
-                  <span>Decor</span>
-                </div>
-                <div>
-                  <img loading="lazy" src="images/ki4.jpg" alt="bed" />
-                  <span>Bedding & Bath</span>
-                </div>
-              </div>
-              <a href="#">Shop Now</a>
-            </div>
-          </div>
-          <div class="product-comp">
-            <div class="box box-c">
-              <h3>Shop Valentine's Day</h3>
-              <div>
+              <div class="slide">
                 <img
                   loading="lazy"
-                  src="images/shop valentine's.jpg"
-                  alt="valentine"
+                  src="images/26.jpg"
+                  alt="Amazon Electronics sale promotional banner"
                 />
               </div>
-              <a href="#">See More</a>
-            </div>
-            <div class="box box-c">
-              <h3>Electronics</h3>
-              <div>
+              <div class="slide">
                 <img
                   loading="lazy"
-                  src="images/electronics.jpg"
-                  alt="electronic"
+                  src="images/si3.jpg"
+                  alt="Amazon Prime Video promotional banner"
                 />
               </div>
-              <a href="#">See More</a>
-            </div>
-            <div class="box box-c">
-              <h3>Find your ideal TV</h3>
-              <div>
+              <div class="slide">
                 <img
                   loading="lazy"
-                  src="images/find your deal.jpg"
-                  alt="deal"
+                  src="images/si4.jpg"
+                  alt="Amazon Deals and promotions banner"
                 />
               </div>
-              <a href="#">See More</a>
-            </div>
-            <div class="box box-c">
-              <h3>Easy Returns</h3>
-              <div>
-                <img loading="lazy" src="images/easy return.jpg" alt="return" />
-              </div>
-              <a href="#">See More</a>
             </div>
           </div>
         </div>
-        <div class="slider">
-          <div class="image-box">
-            <div class="slide">
-              <img loading="lazy" src="images/si1.jpg" alt="banner" />
+      </section>
+      <section class="sec-2">
+        <div class="slide-sec">
+          <div class="l-btn"><i class="fa-solid fa-chevron-left"></i></div>
+          <div class="r-btn"><i class="fa-solid fa-chevron-right"></i></div>
+          <h3>Popular Products in Wireless Globally</h3>
+          <ul class="product-slide">
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter1.jpg"
+                alt="Wireless Bluetooth cell phone accessory"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter2.jpg"
+                alt="Smartphone device"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter3.jpg"
+                alt="Mobile phone gadget"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter4.jpg"
+                alt="Wireless communication device"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter5.jpg"
+                alt="Handheld mobile phone"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter6.jpg"
+                alt="Touchscreen smartphone"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter7.jpg"
+                alt="Mobile communication device"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter8.jpg"
+                alt="Personal digital assistant"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter9.jpg"
+                alt="Wireless mobile device"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter10.jpg"
+                alt="Cell phone accessory"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter11.jpg"
+                alt="Mobile technology product"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter12.jpg"
+                alt="Portable wireless device"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter13.jpg"
+                alt="Digital music player"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter14.jpg"
+                alt="Mobile electronics product"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pinter15.jpg"
+                alt="Handheld electronic device"
+              />
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="sec-2">
+        <div class="slide-sec">
+          <div class="l-btn btn-1b">
+            <i class="fa-solid fa-chevron-left"></i>
+          </div>
+          <div class="r-btn btn-1a">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <h3>Popular Products in PC Globally</h3>
+          <ul class="product-slide product-slide-1">
+            <li>
+              <img
+                loading="lazy"
+                src="images/pc1.jpg"
+                alt="Audio jack connector accessory"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pc2.jpg"
+                alt="Personal computer desktop"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pc3.jpg"
+                alt="Desktop computer tower"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pc4.jpg"
+                alt="Computer monitor display"
+              />
+            </li>
+            <li>
+              <img loading="lazy" src="images/pc5.jpg" alt="Laptop computer" />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pc6.jpg"
+                alt="Computer hardware device"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pc7.jpg"
+                alt="Personal computing equipment"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pc8.jpg"
+                alt="Computer wireless mouse"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pc9.jpg"
+                alt="Computer processing unit"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pc10.jpg"
+                alt="Computing workstation"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pc11.jpg"
+                alt="Desktop PC system"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pc12.jpg"
+                alt="Solid state drive storage"
+              />
+            </li>
+            <li>
+              <img loading="lazy" src="images/pc13.jpg" alt="SSD hard drive" />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pc14.jpg"
+                alt="Computer gaming headset"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/pc15.jpg"
+                alt="Foldable laptop computer"
+              />
+            </li>
+          </ul>
+        </div>
+      </section>
+      <div class="product-comp">
+        <div class="box box-c">
+          <h3>Shop Activity Trackers and Smart Watches</h3>
+          <div>
+            <img
+              loading="lazy"
+              src="images/watch.jpg"
+              alt="Activity trackers and smart watches"
+            />
+          </div>
+          <a href="#">See More</a>
+        </div>
+        <div class="box box-d">
+          <h3>Comfy Styles for Men</h3>
+          <div class="box-a">
+            <div>
+              <img
+                loading="lazy"
+                src="images/cm1.jpg"
+                alt="Men's sweatshirts and hoodies"
+              />
+              <span>Sweatshirts</span>
             </div>
-            <div class="slide">
-              <img loading="lazy" src="images/26.jpg" alt="banner" />
+            <div>
+              <img
+                loading="lazy"
+                src="images/cm2.jpg"
+                alt="Men's jogger pants"
+              />
+              <span>Joggers</span>
             </div>
-            <div class="slide">
-              <img loading="lazy" src="images/si3.jpg" alt="banner" />
+            <div>
+              <img
+                loading="lazy"
+                src="images/cm3.jpg"
+                alt="Men's cardigan sweaters"
+              />
+              <span>Cardigans</span>
             </div>
-            <div class="slide">
-              <img loading="lazy" src="images/si4.jpg" alt="banner" />
+            <div>
+              <img
+                loading="lazy"
+                src="images/cm4.jpg"
+                alt="Men's casual t-shirts"
+              />
+              <span>Easy Tees</span>
             </div>
           </div>
+          <a href="#">See More</a>
         </div>
-      </div>
-    </section>
-    <section class="sec-2">
-      <div class="slide-sec">
-        <div class="l-btn"><i class="fa-solid fa-chevron-left"></i></div>
-        <div class="r-btn"><i class="fa-solid fa-chevron-right"></i></div>
-        <h3>Popular Products in Wireless Globally</h3>
-        <ul class="product-slide">
-          <li>
-            <img loading="lazy" src="images/pinter1.jpg" alt="phone" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter2.jpg" alt="phone" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter3.jpg" alt="phone" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter4.jpg" alt="phone" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter5.jpg" alt="phone" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter6.jpg" alt="phone" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter7.jpg" alt="phone" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter8.jpg" alt="phone" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter9.jpg" alt="phone" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter10.jpg" alt="phone" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter11.jpg" alt="phone" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter12.jpg" alt="phone" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter13.jpg" alt="ipod" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter14.jpg" alt="phone" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pinter15.jpg" alt="phone" />
-          </li>
-        </ul>
-      </div>
-    </section>
-    <section class="sec-2">
-      <div class="slide-sec">
-        <div class="l-btn btn-1b"><i class="fa-solid fa-chevron-left"></i></div>
-        <div class="r-btn btn-1a">
-          <i class="fa-solid fa-chevron-right"></i>
-        </div>
-        <h3>Popular Products in PC Globally</h3>
-        <ul class="product-slide product-slide-1">
-          <li>
-            <img loading="lazy" src="images/pc1.jpg" alt="jack" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc2.jpg" alt="pc" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc3.jpg" alt="pc" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc4.jpg" alt="pc" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc5.jpg" alt="pc" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc6.jpg" alt="pc" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc7.jpg" alt="pc" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc8.jpg" alt="mouse" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc9.jpg" alt="cpu" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc10.jpg" alt="pc" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc11.jpg" alt="pc" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc12.jpg" alt="sdd" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc13.jpg" alt="sdd" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc14.jpg" alt="headset" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/pc15.jpg" alt="foldable" />
-          </li>
-        </ul>
-      </div>
-    </section>
-    <div class="product-comp">
-      <div class="box box-c">
-        <h3>Shop Activity Trackers and Smart Watches</h3>
-        <div>
-          <img loading="lazy" src="images/watch.jpg" alt="watch" />
-        </div>
-        <a href="#">See More</a>
-      </div>
-      <div class="box box-d">
-        <h3>Comfy Styles for Men</h3>
-        <div class="box-a">
-          <div>
-            <img loading="lazy" src="images/cm1.jpg" alt="shirt" />
-            <span>Sweatshirts</span>
+        <div class="box box-d">
+          <h3>Gaming Merchandise</h3>
+          <div class="box-a">
+            <div>
+              <img
+                loading="lazy"
+                src="images/gm1.jpg"
+                alt="Gaming apparel and clothing"
+              />
+              <span>Apparel</span>
+            </div>
+            <div>
+              <img
+                loading="lazy"
+                src="images/gm2.jpg"
+                alt="Gaming hats and caps"
+              />
+              <span>Hats</span>
+            </div>
+            <div>
+              <img
+                loading="lazy"
+                src="images/gm3.jpg"
+                alt="Gaming action figures"
+              />
+              <span>Action Figures</span>
+            </div>
+            <div>
+              <img
+                loading="lazy"
+                src="images/gm4.jpg"
+                alt="Gaming mugs and drinkware"
+              />
+              <span>Mugs</span>
+            </div>
           </div>
+          <a href="#">See More</a>
+        </div>
+        <div class="box box-c">
+          <h3>Shop Pet Supplies</h3>
           <div>
-            <img loading="lazy" src="images/cm2.jpg" alt="jogger" />
-            <span>Joggers</span>
+            <img
+              loading="lazy"
+              src="images/pets.jpg"
+              alt="Pet supplies and accessories"
+            />
           </div>
+          <a href="#">See More</a>
+        </div>
+      </div>
+      <div class="product-comp">
+        <div class="box box-c">
+          <h3>For your Fitness Needs</h3>
           <div>
-            <img loading="lazy" src="images/cm3.jpg" alt="cardigan" />
-            <span>Cardigans</span>
+            <img
+              loading="lazy"
+              src="images/fitness.jpg"
+              alt="Fitness equipment and workout gear"
+            />
           </div>
+          <a href="#">Shop Now</a>
+        </div>
+        <div class="box box-c">
+          <h3>Create with Strip Lights</h3>
           <div>
-            <img loading="lazy" src="images/cm4.jpg" alt="tees" />
-            <span>Easy Tees</span>
+            <img
+              loading="lazy"
+              src="images/light.jpg"
+              alt="LED strip lights for home decor"
+            />
           </div>
+          <a href="#">Shop Now</a>
         </div>
-        <a href="#">See More</a>
-      </div>
-      <div class="box box-d">
-        <h3>Gaming Merchandise</h3>
-        <div class="box-a">
+        <div class="box box-c">
+          <h3>New arrivals in Toys</h3>
           <div>
-            <img loading="lazy" src="images/gm1.jpg" alt="apparel" />
-            <span>Apparel</span>
+            <img
+              loading="lazy"
+              src="images/craft.jpg"
+              alt="New toy arrivals and crafts"
+            />
           </div>
+          <a href="#">Shop Now</a>
+        </div>
+        <div class="box box-c">
+          <h3>Kindle E Readers</h3>
           <div>
-            <img loading="lazy" src="images/gm2.jpg" alt="hats" />
-            <span>Hats</span>
+            <img
+              loading="lazy"
+              src="images/reader.jpg"
+              alt="Kindle e-readers and digital books"
+            />
           </div>
-          <div>
-            <img loading="lazy" src="images/gm3.jpg" alt="action" />
-            <span>Action Figures</span>
+          <a href="#">Shop Now</a>
+        </div>
+      </div>
+      <section class="sec-2">
+        <div class="slide-sec">
+          <div class="l-btn btn-1c">
+            <i class="fa-solid fa-chevron-left"></i>
           </div>
-          <div>
-            <img loading="lazy" src="images/gm4.jpg" alt="mug" />
-            <span>Mugs</span>
+          <div class="r-btn btn-1d">
+            <i class="fa-solid fa-chevron-right"></i>
           </div>
+          <h3>Top Sellers in Books</h3>
+          <ul class="product-slide product-slide-2">
+            <li>
+              <img
+                loading="lazy"
+                src="images/b1.jpg"
+                alt="Bestselling fiction book"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/b2.jpg"
+                alt="Popular novel book"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/b3.jpg"
+                alt="Trending book title"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/b4.jpg"
+                alt="Recommended reading book"
+              />
+            </li>
+            <li>
+              <img loading="lazy" src="images/b5.jpg" alt="Top selling book" />
+            </li>
+            <li>
+              <img loading="lazy" src="images/b6.jpg" alt="New release book" />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/b7.jpg"
+                alt="Award winning book"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/b8.jpg"
+                alt="Featured book selection"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/b9.jpg"
+                alt="Bestselling author book"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/b10.jpg"
+                alt="Classic literature book"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/ba.jpg"
+                alt="Kindle compatible book"
+              />
+            </li>
+            <li>
+              <img
+                loading="lazy"
+                src="images/bb.jpg"
+                alt="Paper book edition"
+              />
+            </li>
+            <li>
+              <img loading="lazy" src="images/bc.jpg" alt="Top rated book" />
+            </li>
+          </ul>
         </div>
-        <a href="#">See More</a>
-      </div>
-      <div class="box box-c">
-        <h3>Shop Pet Supplies</h3>
-        <div>
-          <img loading="lazy" src="images/pets.jpg" alt="pet" />
-        </div>
-        <a href="#">See More</a>
-      </div>
-    </div>
-    <div class="product-comp">
-      <div class="box box-c">
-        <h3>For your Fitness Needs</h3>
-        <div>
-          <img loading="lazy" src="images/fitness.jpg" alt="fitness" />
-        </div>
-        <a href="#">Shop Now</a>
-      </div>
-      <div class="box box-c">
-        <h3>Create with Strip Lights</h3>
-        <div>
-          <img loading="lazy" src="images/light.jpg" alt="light" />
-        </div>
-        <a href="#">Shop Now</a>
-      </div>
-      <div class="box box-c">
-        <h3>New arrivals in Toys</h3>
-        <div>
-          <img loading="lazy" src="images/craft.jpg" alt="craft" />
-        </div>
-        <a href="#">Shop Now</a>
-      </div>
-      <div class="box box-c">
-        <h3>Kindle E Readers</h3>
-        <div>
-          <img loading="lazy" src="images/reader.jpg" alt="reader" />
-        </div>
-        <a href="#">Shop Now</a>
-      </div>
-    </div>
-    <section class="sec-2">
-      <div class="slide-sec">
-        <div class="l-btn btn-1c"><i class="fa-solid fa-chevron-left"></i></div>
-        <div class="r-btn btn-1d">
-          <i class="fa-solid fa-chevron-right"></i>
-        </div>
-        <h3>Top Sellers in Books</h3>
-        <ul class="product-slide product-slide-2">
-          <li>
-            <img loading="lazy" src="images/b1.jpg" alt="book" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/b2.jpg" alt="book" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/b3.jpg" alt="book" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/b4.jpg" alt="book" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/b5.jpg" alt="book" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/b6.jpg" alt="book" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/b7.jpg" alt="book" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/b8.jpg" alt="book" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/b9.jpg" alt="book" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/b10.jpg" alt="book" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/ba.jpg" alt="book" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/bb.jpg" alt="book" />
-          </li>
-          <li>
-            <img loading="lazy" src="images/bc.jpg" alt="book" />
-          </li>
-        </ul>
-      </div>
-    </section>
-    <section class="footer">
+      </section>
+    </main>
+    <footer role="contentinfo" class="footer">
       <div class="best">
         <h3>Sign up for the Personalized Experience</h3>
         <button>Sign in</button>
@@ -754,11 +1037,11 @@
         </div>
       </div>
       <div class="copy">
-        <span
+        <span id="copyright"
           >Designed By Bhagwat Nepal | Amazon Clone Demo - Front-End Project
         </span>
       </div>
-    </section>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

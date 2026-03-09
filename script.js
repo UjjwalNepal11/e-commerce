@@ -184,3 +184,13 @@ searchInput.addEventListener("keydown", (event) => {
 function hideNotice() {
   document.getElementById("demo-notice").style.display = "none";
 }
+document.addEventListener("DOMContentLoaded", function () {
+  const currentYear = new Date().getFullYear();
+  const copyrightElement = document.getElementById("copyright");
+  if (copyrightElement) {
+    copyrightElement.textContent =
+      "© " +
+      currentYear +
+      " Designed By Bhagwat Nepal | Amazon Clone Demo - Front-End Project";
+  }
+});

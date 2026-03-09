@@ -1,4 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap");
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #131a22;
+  color: white;
+  padding: 8px 16px;
+  z-index: 10000;
+  transition: top 0.3s;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 * {
   margin: 0;
   padding: 0;
