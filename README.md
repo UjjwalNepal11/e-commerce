@@ -21,4 +21,4 @@ An e-commerce website clone inspired by Amazon, built with HTML, CSS, and JavaSc
 
 ## Live Demo
 
-View the live demo: [https://ujjwalnepal11.github.io/e-commerce/]
+[View the live demo](https://ujjwalnepal11.github.io/e-commerce/)
